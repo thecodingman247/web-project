@@ -2,19 +2,14 @@ pipeline {
     agent {label 'slave'}
 
     stages {
-        stage('Build') {
+        stage('Init') {
             steps {
-                echo 'Building..'
+                sh 'npm i'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                sh 'npm run test -- --watchAll=false'
             }
         }
     }
