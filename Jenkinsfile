@@ -13,4 +13,11 @@ pipeline {
             }
         }
     }
+
+    post {
+        success {
+            archiveArtifacts artifacts: 'build'
+        }
+    }
+
 }
