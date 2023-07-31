@@ -19,10 +19,13 @@ pipeline {
         }
     }
 
-    post {
+     post {
         success {
-             input "Archive Artifacts", ok: 'Archive'   
-             archiveArtifacts artifacts: 'build/**/*', fingerprint: true
+            input "Archive Artifacts?", ok: 'Archive'
+            archiveArtifacts artifacts: 'build/**/*', fingerprint: true
+        }
+        failure {
+            echo "Build failed, no artifacts will be archived."
         }
     }
 }
