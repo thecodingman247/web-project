@@ -21,7 +21,8 @@ pipeline {
 
     post {
         success {
-             archiveArtifacts artifacts: 'build/**/*'
+             input "Archive Artifacts", ok: 'Archive'   
+             archiveArtifacts artifacts: 'build/**/*', fingerprint: true
         }
     }
 }
