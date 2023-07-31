@@ -12,11 +12,16 @@ pipeline {
                 sh 'npm run test -- --watchAll=false'
             }
         }
+        stage('build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
     }
 
     post {
         success {
-            archiveArtifacts artifacts: '**/*'
+             archiveArtifacts artifacts: 'build/**/*'
         }
     }
 }
