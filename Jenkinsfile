@@ -19,9 +19,9 @@ pipeline {
         }
     }
 
-     post {
+      post {
         success {
-            input "Archive Artifacts?", ok: 'Archive'
+            input message: "Archive Artifacts?", ok: 'Archive'
             archiveArtifacts artifacts: 'build/**/*', fingerprint: true
         }
         failure {
